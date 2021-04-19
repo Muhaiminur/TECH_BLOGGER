@@ -1,5 +1,7 @@
 package com.technext.blogger.repository;
 
+import android.app.Application;
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.util.Log;
 
@@ -8,6 +10,8 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
+import com.technext.blogger.database.BLOG_DATABASE;
+import com.technext.blogger.database.BlogDao;
 import com.technext.blogger.model.Blog;
 import com.technext.blogger.model.GetBlogListModel;
 import com.technext.blogger.network.ApiService;
@@ -21,9 +25,17 @@ import retrofit2.Response;
 
 public class OnlineBlogRepo {
     ApiService apiInterface = Controller.getBaseClient().create(ApiService.class);
-    private MutableLiveData<List<Blog>> bankMutableLiveData = new MutableLiveData<>();
+    private LiveData<List<Blog>> blogkMutableLiveData;
     public MutableLiveData<Boolean> progressbarObservable = new MutableLiveData<>();
     Gson gson = new Gson();
+
+    BlogDao blogDao;
+
+    public OnlineBlogRepo(Application application) {
+        BLOG_DATABASE db = BLOG_DATABASE.getDatabase(application);
+        blogDao = db.blogDao();
+        blogkMutableLiveData = blogDao.getAllblog();
+    }
 
     public void get_blog_list() {
         try {
@@ -39,7 +51,11 @@ public class OnlineBlogRepo {
                                 if (response.body() != null) {
                                     Log.d("from server", response.body() + "");
                                     GetBlogListModel pList = gson.fromJson(response.body(), GetBlogListModel.class);
-                                    bankMutableLiveData.postValue(pList.getBlogs());
+                                    //blogkMutableLiveData.postValue(pList.getBlogs());
+
+                                    new insertallAsyncTask(blogDao).execute(pList.getBlogs());
+                                    //blogkMutableLiveData = blogDao.getAllblog();
+                                    //blogkMutableLiveData.postValue(blogDao.getAllblog());
                                 }
                             }
 
@@ -47,11 +63,11 @@ public class OnlineBlogRepo {
                             public void onFailure(Call<JsonElement> call, Throwable t) {
                                 progressbarObservable.postValue(false);
                                 Log.d("Error", t.toString());
-                                //bankMutableLiveData.postValue(null);
+                                //blogkMutableLiveData.postValue(null);
                             }
                         });
                     }
-                }, 5000);
+                }, 0);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -61,10 +77,26 @@ public class OnlineBlogRepo {
     }
 
     public LiveData<List<Blog>> getblogData() {
-        return bankMutableLiveData;
+        return blogkMutableLiveData;
     }
 
     public MutableLiveData<Boolean> getProgress() {
         return progressbarObservable;
+    }
+
+
+    private static class insertallAsyncTask extends AsyncTask<List<Blog>, Void, Void> {
+
+        private BlogDao mAsyncTaskDao;
+
+        insertallAsyncTask(BlogDao dao) {
+            mAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final List<Blog>... params) {
+            mAsyncTaskDao.insertallblog(params[0]);
+            return null;
+        }
     }
 }

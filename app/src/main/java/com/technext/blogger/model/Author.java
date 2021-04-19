@@ -1,5 +1,7 @@
 package com.technext.blogger.model;
 
+import androidx.room.ColumnInfo;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -7,6 +9,7 @@ public class Author {
 
     @SerializedName("id")
     @Expose
+    @ColumnInfo(name = "blogauthor")
     private Integer id;
     @SerializedName("name")
     @Expose

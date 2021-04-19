@@ -20,13 +20,13 @@ public class BloglistPageViewModel extends AndroidViewModel {
 
     public BloglistPageViewModel(@NonNull Application application) {
         super(application);
+        repo = new OnlineBlogRepo(application);
     }
 
     public void init() {
-        repo = new OnlineBlogRepo();
-        searchbloglist();
         blogData = repo.getblogData();
         progressbarObservable = repo.getProgress();
+        searchbloglist();
     }
 
     public void searchbloglist() {
