@@ -1,0 +1,26 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.TechBlogger" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/app_blue</item>
+        <item name="colorPrimaryVariant">@color/app_blue</item>
+        <item name="colorOnPrimary">@color/app_blue</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/app_blue</item>
+        <item name="colorSecondaryVariant">@color/app_blue</item>
+        <item name="colorOnSecondary">@color/app_blue</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/app_blue</item>
+        <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:actionBarSize">0dp</item>
+    </style>
+
+    <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/app_red1</item>
+        <item name="android:textColorPrimary">@color/app_black2</item>
+        <item name="android:background">@color/app_white1</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+</resources>
