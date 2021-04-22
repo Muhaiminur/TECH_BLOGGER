@@ -24,6 +24,9 @@ public interface BlogDao {
     @Update
     void updateblog(Blog blog);
 
+    /*@Query("UPDATE blog_table SET blogtittle=:b.  WHERE blogid = :old_cart")
+    void updateblog(String old_id, Blog b);*/
+
     @Delete
     void deleteblog(Blog blog);
 

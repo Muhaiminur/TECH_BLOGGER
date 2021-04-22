@@ -1,7 +1,6 @@
 package com.technext.blogger.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,15 +10,15 @@ import android.view.ViewGroup;
 import androidx.databinding.DataBindingUtil;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 import com.technext.blogger.R;
 import com.technext.blogger.databinding.RecyclerBlogBinding;
+import com.technext.blogger.library.KeyWord;
 import com.technext.blogger.library.Utility;
 import com.technext.blogger.model.Blog;
-import com.technext.blogger.model.GetBlogListModel;
 
 import java.util.List;
 
@@ -63,13 +62,13 @@ public class BloglistAdapter extends RecyclerView.Adapter<BloglistAdapter.Todo_V
                 @Override
                 public void onClick(View view) {
                     try {
-                        /*NavHostFragment navHostFragment = (NavHostFragment) ((LendenActivity) context).getSupportFragmentManager().findFragmentById(R.id.nav_host_lenden);
-                        NavController navController = navHostFragment.getNavController();
+                        NavController navController = Navigation.findNavController(holder.binding.getRoot());
                         if (navController != null) {
+                            Gson gson = new Gson();
                             Bundle bundle = new Bundle();
-                            bundle.putInt(JsonKeys.ORDER_ID, bodyResponse.getOrderId());
-                            navController.navigate(R.id.pinCustomerFragment, bundle);
-                        }*/
+                            bundle.putString(KeyWord.BLOG_DETAILS, gson.toJson(bodyResponse));
+                            navController.navigate(R.id.blogdetailspage_fragment, bundle);
+                        }
                     } catch (Exception e) {
                         Log.d("Error Line Number", Log.getStackTraceString(e));
                     }

@@ -8,4 +8,15 @@
     <string name="no_network_string">Please Connect To Internet</string>
     <string name="loading_string">Loading</string>
     <string name="something_went_wrong">Can Not Connect With Server</string>
+    <string name="category_string">Categories : </string>
+    <string name="author1_string">Author : </string>
+    <string name="edit_string">Edit Blog</string>
+    <string name="add_string">Add new Blog</string>
+    <string name="tittlehint_string">Add Tittle</string>
+    <string name="subtittlehint_string">Add Description</string>
+    <string name="cathint_string">Add Category :  </string>
+    <string name="catbus_string">Business</string>
+    <string name="catlife_string">Lifestyle</string>
+    <string name="catenter_string">Entertainment</string>
+    <string name="catpro_string">Productivity</string>
 </resources>

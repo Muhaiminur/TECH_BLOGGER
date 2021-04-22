@@ -16,4 +16,7 @@ public class KeyWord {
     public static final String NOTIFICATION_CHANNEL_NAME = "TECH_BLOGGER";
     public static final int NOTIFICATION_ID = 785;
 
+
+    public static final String BLOG_DETAILS = "blogdetails";
+    public static final String BLOG_EDIT = "blogdEdit";
 }

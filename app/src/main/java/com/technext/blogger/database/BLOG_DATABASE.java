@@ -9,7 +9,7 @@ import androidx.room.TypeConverters;
 
 import com.technext.blogger.model.Blog;
 
-@Database(entities = {Blog.class}, version = 1, exportSchema = false)
+@Database(entities = {Blog.class}, version = 2, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class BLOG_DATABASE extends RoomDatabase {
     public abstract BlogDao blogDao();

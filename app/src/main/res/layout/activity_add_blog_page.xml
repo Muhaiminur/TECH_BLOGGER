@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.activity.AddBlogPage">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/addblog_tittle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:drawablePadding="15dp"
+                    android:hint="@string/tittlehint_string"
+                    android:inputType="text"
+                    android:padding="15dp"
+                    android:textAlignment="textStart"
+                    android:textColorHint="#626262"
+                    android:textSize="@dimen/font_xxxl" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/addblog_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="15dp"
+                    android:gravity="top|start"
+                    android:hint="@string/subtittlehint_string"
+                    android:inputType="textMultiLine"
+                    android:lines="8"
+                    android:padding="15dp"
+                    android:scrollbars="vertical"
+                    android:textColorHint="#626262"
+                    android:textSize="@dimen/font_xxxl" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/app_hint" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="@string/cathint_string"
+                android:textAlignment="textStart"
+                android:textColor="@color/app_hint"
+                android:textSize="@dimen/font_xl"
+                android:textStyle="normal" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                app:cardMaxElevation="5dp"
+                app:contentPadding="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/addblog_catbusiness"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/rectangular_blue_border_white"
+                        android:paddingStart="20dp"
+                        android:paddingTop="2dp"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="2dp"
+                        android:text="@string/catbus_string"
+                        android:textAlignment="center"
+                        android:textColor="@color/app_dark"
+                        android:textSize="@dimen/font_xxl"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:id="@+id/addblog_catlife"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/rectangular_blue_border_white"
+                        android:paddingStart="20dp"
+                        android:paddingTop="2dp"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="2dp"
+                        android:text="@string/catlife_string"
+                        android:textAlignment="center"
+                        android:textColor="@color/app_dark"
+                        android:textSize="@dimen/font_xxl"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:id="@+id/addblog_catenter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/rectangular_blue_border_white"
+                        android:paddingStart="20dp"
+                        android:paddingTop="2dp"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="2dp"
+                        android:text="@string/catenter_string"
+                        android:textAlignment="center"
+                        android:textColor="@color/app_dark"
+                        android:textSize="@dimen/font_xxl"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:id="@+id/addblog_catpro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/rectangular_blue_border_white"
+                        android:paddingStart="20dp"
+                        android:paddingTop="2dp"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="2dp"
+                        android:text="@string/catpro_string"
+                        android:textAlignment="center"
+                        android:textColor="@color/app_dark"
+                        android:textSize="@dimen/font_xxl"
+                        android:textStyle="normal" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/app_hint" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="@string/author1_string"
+                android:textAlignment="textStart"
+                android:textColor="@color/app_hint"
+                android:textSize="@dimen/font_xl"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/addblog_authorname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:padding="5dp"
+                android:textAlignment="textEnd"
+                android:textColor="@color/app_hint"
+                android:textSize="@dimen/font_xxxl"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/addblog_authorpro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:padding="5dp"
+                android:textAlignment="textEnd"
+                android:textColor="@color/app_hint"
+                android:textSize="@dimen/font_xxl"
+                android:textStyle="normal" />
+
+            <ImageView
+                android:id="@+id/addblog_authorimage"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_gravity="end"
+                android:layout_margin="5dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_default" />
+
+            <Button
+                android:id="@+id/addblog_new"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp"
+                android:background="@drawable/rectangular_red"
+                android:text="@string/add_string"
+                android:textAlignment="center"
+                android:textColor="@color/app_white1"
+                android:textSize="@dimen/font_xxxl"
+                android:textStyle="bold"
+                app:backgroundTint="@null" />
+        </LinearLayout>
+
+    </ScrollView>
+</layout>

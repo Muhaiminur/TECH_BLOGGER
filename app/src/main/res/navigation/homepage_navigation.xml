@@ -7,5 +7,15 @@
     <fragment
         android:id="@+id/bloglistpage_fragment"
         android:name="com.technext.blogger.view.fragment.BloglistPage"
-        tools:layout="@layout/bloglist_page_fragment" />
+        tools:layout="@layout/bloglist_page_fragment" >
+        <action
+            android:id="@+id/action_bloglistpage_fragment_to_blogdetailspage_fragment"
+            app:destination="@id/blogdetailspage_fragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/blogdetailspage_fragment"
+        android:name="com.technext.blogger.view.fragment.BlogDetailsPage"
+        tools:layout="@layout/blog_details_page_fragment" />
 </navigation>

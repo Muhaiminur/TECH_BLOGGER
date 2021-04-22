@@ -1,6 +1,7 @@
 package com.technext.blogger.view.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,6 +27,7 @@ import com.technext.blogger.model.Blog;
 import com.technext.blogger.model.GetBlogListModel;
 import com.technext.blogger.network.ApiService;
 import com.technext.blogger.network.Controller;
+import com.technext.blogger.view.activity.AddBlogPage;
 import com.technext.blogger.viewmodel.BloglistPageViewModel;
 
 import java.util.ArrayList;
@@ -59,6 +61,12 @@ public class BloglistPage extends Fragment {
                 context = getActivity();
                 utility = new Utility(context);
                 initial_list();
+                binding.homepageAdd.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new Intent(context, AddBlogPage.class));
+                    }
+                });
             } catch (Exception e) {
                 Log.d("Error Line Number", Log.getStackTraceString(e));
             }
@@ -101,6 +109,7 @@ public class BloglistPage extends Fragment {
             Log.d("Error Line Number", Log.getStackTraceString(e));
         }
     }
+
     private void observeLogin() {
         mViewModel.getProgressbar().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
