@@ -6,16 +6,21 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.TimeUnit;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+@Singleton
 public class Controller {
     static final String BASE_URL = "https://my-json-server.typicode.com/sohel-cse/";
     private static Retrofit retrofit = null;
-
     ApiService riderAPI;
-    private Controller() {
+
+    @Inject
+    public Controller() {
         getBaseClient();
         riderAPI = retrofit.create(ApiService.class);
     }

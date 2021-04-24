@@ -1,11 +1,11 @@
 package com.technext.blogger.view.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.technext.blogger.R;
 

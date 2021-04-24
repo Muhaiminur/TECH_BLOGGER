@@ -16,14 +16,13 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.technext.blogger.R;
 import com.technext.blogger.databinding.ActivityAddBlogPageBinding;
+import com.technext.blogger.library.KeyWord;
 import com.technext.blogger.library.Utility;
 import com.technext.blogger.model.Author;
 import com.technext.blogger.model.Blog;
 import com.technext.blogger.viewmodel.AddBlogPageViewModel;
-import com.technext.blogger.library.KeyWord;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class AddBlogPage extends AppCompatActivity {
@@ -31,10 +30,10 @@ public class AddBlogPage extends AppCompatActivity {
     Utility utility;
     ActivityAddBlogPageBinding binding;
     List<String> catlist = new ArrayList<>();
-    AddBlogPageViewModel viewModel;
     Blog editblog;
     Gson gson = new Gson();
     int count = 1;
+    AddBlogPageViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +41,7 @@ public class AddBlogPage extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_blog_page);
         try {
             context = this;
-            utility = new Utility(context);
+            utility=new Utility(context);
             viewModel = new ViewModelProvider(this).get(AddBlogPageViewModel.class);
             viewModel.init();
             observeadd();
@@ -223,7 +222,7 @@ public class AddBlogPage extends AppCompatActivity {
             @Override
             public void onChanged(List<Blog> volumesResponse) {
                 if (volumesResponse != null) {
-                    count = volumesResponse.size()+1;
+                    count = volumesResponse.size() + 1;
                 }
             }
         });

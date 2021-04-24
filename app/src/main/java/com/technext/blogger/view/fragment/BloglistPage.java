@@ -18,13 +18,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.technext.blogger.R;
 import com.technext.blogger.adapter.BloglistAdapter;
 import com.technext.blogger.databinding.BloglistPageFragmentBinding;
 import com.technext.blogger.library.Utility;
 import com.technext.blogger.model.Blog;
-import com.technext.blogger.model.GetBlogListModel;
 import com.technext.blogger.network.ApiService;
 import com.technext.blogger.network.Controller;
 import com.technext.blogger.view.activity.AddBlogPage;
@@ -33,9 +31,7 @@ import com.technext.blogger.viewmodel.BloglistPageViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import javax.inject.Inject;
 
 public class BloglistPage extends Fragment {
 
@@ -46,7 +42,6 @@ public class BloglistPage extends Fragment {
     Context context;
     Utility utility;
     BloglistPageFragmentBinding binding;
-
     private BloglistPageViewModel mViewModel;
 
     public static BloglistPage newInstance() {

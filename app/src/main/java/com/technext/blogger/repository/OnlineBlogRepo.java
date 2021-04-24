@@ -24,7 +24,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class OnlineBlogRepo {
+    //ApplicationComponent appComponent = DaggerApplicationComponent.builder().build();
+    //Controller controller = appComponent.CONTROLLER();
     ApiService apiInterface = Controller.getBaseClient().create(ApiService.class);
+    //ApiService apiInterface = controller.getBaseClient().create(ApiService.class);
     private LiveData<List<Blog>> blogkMutableLiveData;
     public MutableLiveData<Boolean> progressbarObservable = new MutableLiveData<>();
     Gson gson = new Gson();
