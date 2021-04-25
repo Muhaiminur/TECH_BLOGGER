@@ -10,6 +10,8 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
+import com.technext.blogger.dagger.DaggerFixedComponent;
+import com.technext.blogger.dagger.FixedComponent;
 import com.technext.blogger.database.BLOG_DATABASE;
 import com.technext.blogger.database.BlogDao;
 import com.technext.blogger.model.Blog;
@@ -24,10 +26,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class OnlineBlogRepo {
-    //ApplicationComponent appComponent = DaggerApplicationComponent.builder().build();
-    //Controller controller = appComponent.CONTROLLER();
-    ApiService apiInterface = Controller.getBaseClient().create(ApiService.class);
-    //ApiService apiInterface = controller.getBaseClient().create(ApiService.class);
+    FixedComponent fixedModulel = DaggerFixedComponent.create();
+    Controller controller = fixedModulel.getController();
+    ApiService apiInterface = controller.getBaseClient().create(ApiService.class);
     private LiveData<List<Blog>> blogkMutableLiveData;
     public MutableLiveData<Boolean> progressbarObservable = new MutableLiveData<>();
     Gson gson = new Gson();

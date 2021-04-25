@@ -41,7 +41,7 @@ public class AddBlogPage extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_blog_page);
         try {
             context = this;
-            utility=new Utility(context);
+            utility = new Utility(context);
             viewModel = new ViewModelProvider(this).get(AddBlogPageViewModel.class);
             viewModel.init();
             observeadd();

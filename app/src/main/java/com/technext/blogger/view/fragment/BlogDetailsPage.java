@@ -25,8 +25,6 @@ import com.technext.blogger.network.Controller;
 import com.technext.blogger.view.activity.AddBlogPage;
 import com.technext.blogger.viewmodel.BlogDetailsPageViewModel;
 
-import javax.inject.Inject;
-
 public class BlogDetailsPage extends Fragment {
     ApiService apiInterface = Controller.getBaseClient().create(ApiService.class);
     Gson gson = new Gson();
@@ -35,6 +33,7 @@ public class BlogDetailsPage extends Fragment {
     BlogDetailsPageFragmentBinding binding;
     Blog blog;
     private BlogDetailsPageViewModel mViewModel;
+
     public static BlogDetailsPage newInstance() {
         return new BlogDetailsPage();
     }
@@ -75,10 +74,11 @@ public class BlogDetailsPage extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         mViewModel = new ViewModelProvider(this).get(BlogDetailsPageViewModel.class);
-        // TODO: Use the ViewModel
+
     }
 
 }

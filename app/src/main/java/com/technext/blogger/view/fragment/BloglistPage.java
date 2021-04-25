@@ -12,19 +12,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.gson.Gson;
-import com.technext.blogger.R;
 import com.technext.blogger.adapter.BloglistAdapter;
+import com.technext.blogger.dagger.MyApplication;
 import com.technext.blogger.databinding.BloglistPageFragmentBinding;
 import com.technext.blogger.library.Utility;
 import com.technext.blogger.model.Blog;
-import com.technext.blogger.network.ApiService;
-import com.technext.blogger.network.Controller;
 import com.technext.blogger.view.activity.AddBlogPage;
 import com.technext.blogger.viewmodel.BloglistPageViewModel;
 
@@ -37,12 +33,13 @@ public class BloglistPage extends Fragment {
 
     List<Blog> blogListModels;
     BloglistAdapter bloglistAdapter;
-    ApiService apiInterface = Controller.getBaseClient().create(ApiService.class);
-    Gson gson = new Gson();
     Context context;
+    @Inject
     Utility utility;
     BloglistPageFragmentBinding binding;
-    private BloglistPageViewModel mViewModel;
+
+    @Inject
+    BloglistPageViewModel mViewModel;
 
     public static BloglistPage newInstance() {
         return new BloglistPage();
@@ -54,7 +51,7 @@ public class BloglistPage extends Fragment {
             try {
                 binding = BloglistPageFragmentBinding.inflate(inflater, container, false);
                 context = getActivity();
-                utility = new Utility(context);
+                //utility = new Utility(context);
                 initial_list();
                 binding.homepageAdd.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -70,9 +67,15 @@ public class BloglistPage extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(BloglistPageViewModel.class);
+    public void onAttach(@NonNull Context context) {
+        ((MyApplication) getActivity().getApplicationContext()).viewModelComponent.injectblogviewmodel(this);
+        super.onAttach(context);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        //mViewModel = new ViewModelProvider(this).get(BloglistPageViewModel.class);
         mViewModel.init();
         observeLogin();
         //initial_list();
@@ -109,10 +112,11 @@ public class BloglistPage extends Fragment {
         mViewModel.getProgressbar().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
             public void onChanged(final Boolean progressObserve) {
+                utility.showToast("paisi");
                 if (progressObserve) {
-                    utility.showProgress(false, context.getResources().getString(R.string.loading_string));
+                    //utility.showProgress(false, context.getResources().getString(R.string.loading_string));
                 } else {
-                    utility.hideProgress();
+                    //utility.hideProgress();
                 }
             }
         });

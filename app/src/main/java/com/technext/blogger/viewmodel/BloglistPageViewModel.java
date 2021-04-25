@@ -12,11 +12,14 @@ import com.technext.blogger.repository.OnlineBlogRepo;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class BloglistPageViewModel extends AndroidViewModel {
     private OnlineBlogRepo repo;
     private LiveData<List<Blog>> blogData;
     private MutableLiveData<Boolean> progressbarObservable;
 
+    @Inject
     public BloglistPageViewModel(@NonNull Application application) {
         super(application);
         repo = new OnlineBlogRepo(application);

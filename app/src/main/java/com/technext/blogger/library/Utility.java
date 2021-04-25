@@ -33,12 +33,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 
+import javax.inject.Inject;
+
 
 public class Utility {
 
-    Context context;
+    private final Context context;
     ProgressDialog mProgressDialog;
 
+    @Inject
     public Utility(Context context) {
         this.context = context;
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();

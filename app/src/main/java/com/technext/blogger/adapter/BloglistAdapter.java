@@ -15,6 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.technext.blogger.R;
+import com.technext.blogger.dagger.ActivityComponent;
+import com.technext.blogger.dagger.ContextModule;
+import com.technext.blogger.dagger.DaggerActivityComponent;
 import com.technext.blogger.databinding.RecyclerBlogBinding;
 import com.technext.blogger.library.KeyWord;
 import com.technext.blogger.library.Utility;
@@ -22,15 +25,24 @@ import com.technext.blogger.model.Blog;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class BloglistAdapter extends RecyclerView.Adapter<BloglistAdapter.Todo_View_Holder> {
     Context context;
     List<Blog> list;
+
+    @Inject
     Utility utility;
 
     public BloglistAdapter(List<Blog> to, Context c) {
         list = to;
         context = c;
-        utility = new Utility(context);
+        //utility = new Utility(context);
+        ActivityComponent activityComponent = DaggerActivityComponent.builder()
+                .contextModule(new ContextModule(context))
+                .build();
+
+        activityComponent.injectadapter(this);
     }
 
     public class Todo_View_Holder extends RecyclerView.ViewHolder {

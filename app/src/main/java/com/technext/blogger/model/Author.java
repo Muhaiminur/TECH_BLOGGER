@@ -21,11 +21,7 @@ public class Author {
     @Expose
     private String profession;
 
-    public Author() {
-    }
-
     public Author(String name, String avatar, String profession) {
-        this.id = id;
         this.name = name;
         this.avatar = avatar;
         this.profession = profession;
